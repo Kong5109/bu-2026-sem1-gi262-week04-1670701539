@@ -76,6 +76,7 @@ namespace Assignment
 
             inv.Remove("Banana");
             Debug.Log("\n=========( 1 )=========\n");
+
             foreach (KeyValuePair<string, int> kvp in inv)
             {
                 var key = kvp.Key;
