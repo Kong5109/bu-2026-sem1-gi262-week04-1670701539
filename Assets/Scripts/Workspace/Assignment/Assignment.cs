@@ -8,8 +8,8 @@ namespace Assignment
         public void Start()
         {
             //AS01_CountWords();
-            AS02_CountNumber();
-            // AS03_CheckValidBrackets();
+            //AS02_CountNumber();
+            AS03_CheckValidBrackets();
             // AS04_PrintReverseLinkedList();
             // AS05_FindMiddleElement();
             // AS06_MergeDictionaries();
@@ -78,7 +78,43 @@ namespace Assignment
         public void AS03_CheckValidBrackets()
         {
             string input = as03Input;
+            Dictionary<char, char> bracketPair = new Dictionary<char, char>();
+            bracketPair.Add( '(', ')' );
+            bracketPair.Add( '[', ']' );
+            bracketPair.Add( '{', '}' );
 
+            LinkedList<char> remainingBracketPair = new LinkedList<char>();
+            foreach (char _char in input)
+            {
+                if (bracketPair.ContainsKey(_char)) // if _char == openBracket
+                {
+                    remainingBracketPair.AddLast(_char);
+                }
+                else if (bracketPair.ContainsValue(_char)) // if _char == closeBracket
+                {
+                    if (remainingBracketPair.Count == 0) // if now we have close bracket but not have openbracket
+                    {
+                        Debug.Log("Invalid");
+                        return;
+                    }
+
+                    char lastOpenBracket = remainingBracketPair.Last.Value;
+                    char pairBracket = bracketPair[lastOpenBracket]; // Find Pair bracket Ex. last = ( ; return )
+                    if (pairBracket == _char)//Check if correct bracket pair
+                    {
+                        remainingBracketPair.RemoveLast();
+                    }
+                }
+            }
+
+            if (remainingBracketPair.Count == 0)
+            {
+                Debug.Log("Valid");
+            }
+            else
+            {
+                Debug.Log("Invalid");
+            }
         }
 
         [Header("AS04 - Print Reverse Linked List")]
