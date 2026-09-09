@@ -394,11 +394,23 @@ MonoBehaviour:
   as04List:
     values: 
   as05List:
-    values: []
+    values:
+    - A
+    - B
+    - C
+    - D
   as06FirstDictionary:
-    entries: []
+    entries:
+    - key: apple
+      value: 3
+    - key: banana
+      value: 2
   as06SecondDictionary:
-    entries: []
+    entries:
+    - key: apple
+      value: 1
+    - key: cherry
+      value: 4
   as07List:
     values: 
   as08Numbers: 
