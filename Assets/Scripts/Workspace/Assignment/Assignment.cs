@@ -7,8 +7,8 @@ namespace Assignment
     {
         public void Start()
         {
-            // AS01_CountWords();
-            // AS02_CountNumber();
+            //AS01_CountWords();
+            AS02_CountNumber();
             // AS03_CheckValidBrackets();
             // AS04_PrintReverseLinkedList();
             // AS05_FindMiddleElement();
@@ -28,7 +28,23 @@ namespace Assignment
         public void AS01_CountWords()
         {
             string[] words = as01Words;
-            throw new System.NotImplementedException();
+            Dictionary<string,int> wordCountDic = new Dictionary<string,int>();
+            foreach (string key in words)
+            {
+                if (wordCountDic.ContainsKey(key))
+                {
+                    wordCountDic[key] += 1;
+                }
+                else
+                {
+                    wordCountDic.Add(key, 1);
+                }
+            }
+
+            foreach (KeyValuePair<string, int> kvp in wordCountDic)
+            {
+                Debug.Log($"Word: '{kvp.Key}' count: {kvp.Value}");
+            }
         }
 
         [Header("AS02 - Count Number")]
@@ -37,7 +53,23 @@ namespace Assignment
         public void AS02_CountNumber()
         {
             int[] numbers = as02Numbers;
-            throw new System.NotImplementedException();
+            Dictionary<int, int> numCountDic = new Dictionary<int, int>();
+            foreach (int _key in numbers)
+            {
+                if (numCountDic.ContainsKey(_key))
+                {
+                    numCountDic[_key] += 1;
+                }
+                else
+                {
+                    numCountDic.Add(_key, 1);
+                }
+            }
+
+            foreach (KeyValuePair<int, int> kvp in numCountDic)
+            {
+                Debug.Log($"Number: '{kvp.Key}' count: {kvp.Value}");
+            }
         }
 
         [Header("AS03 - Check Valid Brackets")]
@@ -46,7 +78,7 @@ namespace Assignment
         public void AS03_CheckValidBrackets()
         {
             string input = as03Input;
-            throw new System.NotImplementedException();
+
         }
 
         [Header("AS04 - Print Reverse Linked List")]
