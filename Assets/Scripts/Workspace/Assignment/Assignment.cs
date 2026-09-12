@@ -13,9 +13,9 @@ namespace Assignment
             //AS04_PrintReverseLinkedList();
             //AS05_FindMiddleElement();
             //AS06_MergeDictionaries();
-            AS07_RemoveDuplicatesFromLinkedList();
-            // AS08_TopFrequentNumber();
-            // AS09_PlayerInventory();
+            //AS07_RemoveDuplicatesFromLinkedList();
+            //AS08_TopFrequentNumber();
+            AS09_PlayerInventory();
             // AS10_GameEventQueue();
             // AS11_PlayerStatsTracker();
         }
@@ -198,7 +198,26 @@ namespace Assignment
         public void AS07_RemoveDuplicatesFromLinkedList()
         {
             LinkedList<int> list = as07List.GetLinkedList();
-            throw new System.NotImplementedException();
+            Dictionary<int, bool> isNumberAvalible = new Dictionary<int, bool>();
+            
+            LinkedListNode<int> current = list.First;
+            while (current != null)
+            {
+                if (isNumberAvalible.ContainsKey(current.Value))
+                {
+                    if (isNumberAvalible[current.Value] == false)
+                    {
+                        Debug.Log(current.Value);
+                        isNumberAvalible[current.Value] = true;
+                    }
+                }
+                else
+                {
+                    Debug.Log(current.Value);
+                    isNumberAvalible[current.Value] = true;
+                }
+                current = current.Next;
+            }
         }
 
         [Header("AS08 - Top Frequent Number")]
@@ -207,7 +226,32 @@ namespace Assignment
         public void AS08_TopFrequentNumber()
         {
             int[] numbers = as08Numbers;
-            throw new System.NotImplementedException();
+            if (numbers == null || numbers.Length == 0)
+            {
+                Debug.Log("Input array is empty");
+                return;
+            }
+            Dictionary<int, int> numberDic = new Dictionary<int, int>();
+            int maxFreKey = numbers[0];
+
+            foreach (int i in numbers)
+            {
+                if (numberDic.ContainsKey(i))
+                {
+                    numberDic[i]++;
+                }
+                else
+                {
+                    numberDic.Add(i, 1);
+                }
+
+                // Check Max Frequency
+                if (numberDic[i] > numberDic[maxFreKey])
+                {
+                    maxFreKey = i;
+                }
+            }
+            Debug.Log($"Key: {maxFreKey}, Count {numberDic[maxFreKey]}");
         }
 
         [Header("AS09 - Player Inventory")]
@@ -220,7 +264,19 @@ namespace Assignment
             Dictionary<string, int> inventory = as09Inventory.GetDictionary();
             string itemName = as09ItemName;
             int quantity = as09Quantity;
-            throw new System.NotImplementedException();
+            if (inventory.ContainsKey(itemName))
+            {
+                inventory[itemName] += quantity;
+            }
+            else
+            {
+                inventory[itemName] = quantity;
+            }
+
+            foreach (var kvp in inventory)
+            {
+                Debug.Log($"Item {kvp.Key}: {inventory[kvp.Key]}");
+            }
         }
 
         [Header("AS10 - Game Event Queue")]
