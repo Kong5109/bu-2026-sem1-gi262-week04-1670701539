@@ -421,11 +421,24 @@ MonoBehaviour:
   as09ItemName: potion
   as09Quantity: 3
   as10EventQueue:
-    values: []
+    values:
+    - eventType: enemy
+      name: Goblin appeared
+      priority: 0
+    - eventType: powerup
+      name: Health boost found
+      priority: 0
+    - eventType: level
+      name: Reached level 2
+      priority: 0
   as11PlayerStats:
-    entries: []
-  as11StatName: 
-  as11Value: 0
+    entries:
+    - key: kills
+      value: 10
+    - key: deaths
+      value: 2
+  as11StatName: assists
+  as11Value: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
